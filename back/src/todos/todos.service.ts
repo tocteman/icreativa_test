@@ -14,8 +14,8 @@ export class TodosService {
   ){}
 
   create(createTodoDto: CreateTodoDto) {
-    const x = this.todoRepository.create(createTodoDto)  
-    return this.todoRepository.save(x)
+    const changeset = this.todoRepository.create(createTodoDto)  
+    return this.todoRepository.save(changeset)
   }
 
   findAll() {
@@ -26,8 +26,8 @@ export class TodosService {
     return `This action returns a #${id} todo`;
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return `This action updates a #${id} todo`;
+  update(id:number, updateTodoDto: UpdateTodoDto) {
+    return this.todoRepository.update(id, updateTodoDto)
   }
 
   remove(id: number) {
