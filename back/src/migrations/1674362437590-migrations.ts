@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class migrations1674362437590 implements MigrationInterface {
+export class TodoTableMigration implements MigrationInterface {
     name = 'migrations1674362437590'
 
     public async up(queryRunner: QueryRunner): Promise<void> {

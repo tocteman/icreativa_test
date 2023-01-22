@@ -3,7 +3,8 @@
 import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
-import { migrations1674362437590 } from './src/migrations/1674362437590-migrations'
+import { TodoTableMigration } from './src/migrations/1674362437590-migrations'
+import { TodoDeletedAtColumnMigration } from './src/migrations/1674368117215-migrations'
  
 config();
  
@@ -17,6 +18,6 @@ export default new DataSource({
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
   entities: ['dist/**/*.entity{.ts,.js}' ],
-  migrations: [migrations1674362437590]
+  migrations: [TodoTableMigration, TodoDeletedAtColumnMigration]
 //   entities: [],
 });

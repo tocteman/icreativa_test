@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, DeleteDateColumn } from 'typeorm';
 
 @Entity()
 export class Todo {
@@ -8,7 +8,7 @@ export class Todo {
   @Column()
   description: string;
 
-  @Column({default: false})
+  @Column({default: true})
   active: boolean;
 
   @Column({default: false})
@@ -19,4 +19,7 @@ export class Todo {
 
   @Column({type: 'timestamptz', nullable: true, default: null, onUpdate: 'CURRENT_TIMESTAMP(-5)'})
   updated_at: Date;
+
+  @DeleteDateColumn({name: 'deleted_at'})
+  deletedAt: Date;
 }

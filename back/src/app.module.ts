@@ -22,7 +22,8 @@ import { UsersModule } from './users/users.module';
       logging: true,
       migrations: [__dirname + '/../migrations/**/*{.ts,.js}'],
       keepConnectionAlive: true,
-      autoLoadEntities: true
+      autoLoadEntities: true,
+      synchronize: true
     }),
     TodosModule,
     UsersModule,

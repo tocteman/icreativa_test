@@ -31,6 +31,7 @@ export class TodosService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} todo`;
+    return this.todoRepository.softDelete(id)
+    // return `This action removes a #${id} todo`;
   }
 }
