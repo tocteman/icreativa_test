@@ -17,7 +17,7 @@ type TodoProps = {
   active: boolean
 }
 
-const TodoCard = ({todo, deleteFn}) => {
+const TodoCard = ({todo, deleteFn}: {todo: TodoProps, deleteFn: any}) => {
   
   let [checked, setChecked] = useState(todo.completed)
 
@@ -28,7 +28,7 @@ const TodoCard = ({todo, deleteFn}) => {
     completeTodo({id, completed: !completed })
     .then(res => {
       if (res.ok) {
-      getTodos(id)
+      getTodos({id})
       .then(getRes => {
         if (getRes.ok) {
           getRes.json()
@@ -39,14 +39,14 @@ const TodoCard = ({todo, deleteFn}) => {
     })
   }
 
-  const fmtDate = timestamp => {
+  const fmtDate = (timestamp: string) => {
     return new Date(timestamp).toLocaleString()
   }
 
 
   return (
         <Card>
-          <Stack direction="horizontal" spacing={4} alignItems="center">
+          <Stack direction="row" spacing={4} alignItems="center">
             <Checkbox checked={checked}
               onChange={complete}
             />

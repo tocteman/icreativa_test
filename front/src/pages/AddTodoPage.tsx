@@ -31,13 +31,13 @@ const AddTodoPage = () => {
       <Stack direction="column" justifyContent="center"
         sx={{minHeight: '100vh'}}
       >
-        <Stack direction="horizontal" alignItems="center">
+        <Stack direction="row" alignItems="center">
         <Link href="/todos">
           <IconButton>
             <ChevronLeftIcon/>
           </IconButton>
         </Link>
-        <Typography variant="p">
+        <Typography>
           Regresar
         </Typography>
         </Stack>

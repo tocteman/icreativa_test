@@ -13,7 +13,12 @@ type DeleteTodoPayload = {
   id: number
 }
 
-export const getTodos = async (id = null) => {
+type GetTodosPayload = {
+  id?: number | null
+}
+
+export const getTodos = async (payload: GetTodosPayload) => {
+  const { id } = payload
   const token = window.localStorage.getItem("access_token")
   const url = !id ? `${apiUrl}/todos` : `${apiUrl}/todos/${id}`
   const init = {

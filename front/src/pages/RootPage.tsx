@@ -11,7 +11,7 @@ const RootPage = () => {
     const token = window.localStorage.getItem("access_token")
     if (!token) { setLocation('/login')}
     if (token) {
-      getTodos()
+      getTodos({id: null})
       .then(res => {
         if (res.ok) { 
           setLocation('/todos') 

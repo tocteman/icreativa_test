@@ -10,11 +10,11 @@ import { Link, useLocation } from "wouter";
 
 const TodosPage = () => {
   
-  let [todos, setTodos] = useState([])
+  let [todos, setTodos] = useState<any[]>([])
   let [location, setLocation] = useLocation()
 
   useEffect(() => {
-    getTodos()
+    getTodos({id: null})
     .then(res => {
       if (res.ok) {
         res.json()
@@ -23,11 +23,11 @@ const TodosPage = () => {
     })
   }, [])
 
-  const handleDelete = (id) => {
+  const handleDelete = (id:number) => {
     deleteTodo({id})
     .then(res => {
       if (res.ok) {
-        const updatedTodos = todos.filter(x => x.id !== id)
+        const updatedTodos = todos?.filter(x => x.id !== id)
         setTodos(updatedTodos)
       }
     })
@@ -45,7 +45,7 @@ const TodosPage = () => {
       sx={{minHeight: '100vh'}}
     >
       <Stack justifyContent="space-between" sx={{minHeight: '80vh', justifyContent: 'space-between', marginTop: '2rem'}}>
-        <Stack direction="horizontal" alignItems="baseline" justifyContent="space-between">
+        <Stack direction="row" alignItems="baseline" justifyContent="space-between">
           <Typography variant="h4">
             Tareas
           </Typography>
