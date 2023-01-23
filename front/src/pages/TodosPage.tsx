@@ -54,7 +54,7 @@ const TodosPage = () => {
           </Button>
         </Stack>
           <Stack spacing={2} sx={{marginTop: '2rem'}}>
-            {todos.length > 1 && todos.map(todo => (
+            {todos.length > 0 && todos.map(todo => (
               <TodoCard todo={todo} key={todo.id} deleteFn={() => handleDelete(todo.id)}/>
             ))}
           </Stack>
