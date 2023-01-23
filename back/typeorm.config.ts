@@ -5,6 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 import { TodoTableMigration } from './src/migrations/1674362437590-migrations'
 import { TodoDeletedAtColumnMigration } from './src/migrations/1674368117215-migrations'
+import { UserTableMigration } from './src/migrations/1674432953154-migrations'
+import { DefaultUserMigration } from './src/migrations/1674433203436-migrations'
  
 config();
  
@@ -18,6 +20,6 @@ export default new DataSource({
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
   entities: ['dist/**/*.entity{.ts,.js}' ],
-  migrations: [TodoTableMigration, TodoDeletedAtColumnMigration]
+  migrations: [TodoTableMigration, TodoDeletedAtColumnMigration, UserTableMigration, DefaultUserMigration]
 //   entities: [],
 });
