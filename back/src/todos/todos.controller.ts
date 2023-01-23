@@ -21,14 +21,20 @@ export class TodosController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  findOne(@Param('id') id:number,) {
+    return this.todosService.findOne(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  update(@Param('id') id: number, @Body() updateTodoDto: UpdateTodoDto) {
     return this.todosService.update(+id, updateTodoDto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.todosService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.todosService.remove(id);
   }
 }

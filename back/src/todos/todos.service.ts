@@ -18,6 +18,12 @@ export class TodosService {
     return this.todoRepository.save(changeset)
   }
 
+  findOne(id) {
+    return this.todoRepository.findOne({
+      where: { id }
+    })
+  }
+
   findAll() {
     return this.todoRepository.find()
   }
