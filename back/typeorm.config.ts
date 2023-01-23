@@ -7,6 +7,7 @@ import { TodoTableMigration } from './src/migrations/1674362437590-migrations'
 import { TodoDeletedAtColumnMigration } from './src/migrations/1674368117215-migrations'
 import { UserTableMigration } from './src/migrations/1674432953154-migrations'
 import { DefaultUserMigration } from './src/migrations/1674433203436-migrations'
+import { UpdatedAtTodoMigration } from './src/migrations/1674437856882-migrations'
  
 config();
  

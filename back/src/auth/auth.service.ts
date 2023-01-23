@@ -15,21 +15,21 @@ export class AuthService {
     let { username, password } = payload
     let persisted = await this.usersService.findOne(username)
     if (persisted) {
-      const match = await compare(password, persisted.password) 
+      let match = await compare(password, persisted.password) 
       if (match) {
         return { username, id: persisted.id }
       }
+      return null
     }
     return null
   }
 
   async login(payload: LoginUserDto) {
-    const user = await this.validateUser(payload)
-    if (!user) throw new HttpException('No encontramos un usuario con esa combincación', HttpStatus.UNAUTHORIZED)
+    let user = await this.validateUser(payload)
+    if (!user) throw new HttpException('No encontramos un usuario con esa combinación', HttpStatus.UNAUTHORIZED)
     if (user) {
-      let payload = { username: user.username, id: user.id }
       return {
-        access_token: this.jwtService.sign(payload),
+        access_token: this.jwtService.sign(user),
       }
     }
   }
